@@ -8,49 +8,64 @@
 </head>
 <body>
     <nav id="navbar">
-        <header>Learning to Code: A Beginner's Path</header>
+        <header>@keyframes</header>
         <a class="nav-link" href="#introduction">Introduction</a>
-        <a class="nav-link" href="#education">Education</a>
-        <a class="nav-link" href="#skills">Skills</a>
-        <a class="nav-link" href="#portfolio">Portfolio</a>
+        <a class="nav-link" href="#syntax">Syntax</a>
+        <a class="nav-link" href="#description">Description</a>
+        <a class="nav-link" href="#valid_keyframes_lists">Valid keyframes lists</a>
         <a class="nav-link" href="#grow">Grow</a>
     </nav>
     <main id="main-doc">
         <section class="main-section" id="introduction">
-            <header><code>Introduction</code></header>
-                <p>Why learn to code?</p>
-                <p>Average #'s and statistics</p>
+            <header><h2>Introduction</h2></header>
+                <p>The <code><strong>@keyframes</strong></code> CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions. </p>
         </section>
-        <section class="main-section" id="education">
-            <header><code>Education</code></header>
-            <p>Self Taught</p>
-            <p>Bootcamps</p>
+        <section class="main-section" id="syntax">
+            <header><h2>Syntax</h2></header>
+            <p><code>@keyframes slidein {
+                from {
+                  transform: translateX(0%);
+                }
+              
+                to {
+                  transform: translateX(100%);
+                }
+              }
+              </code></p>
+              <h4>Values</h4>
+              <ul class="values-title">
+                <li><code><strong>&lt;custom-ident&gt;</strong></code> 
+                  <ul class="values-info">
+                    <li>A name identifying the keyframe list. This must match the identifier production in CSS syntax.</li>
+                  </ul>
+                </li> 
+                <li><code><strong>from</strong></code>
+                  <ul class="values-info">
+                    <li>A starting offset of 0%</li>
+                  </ul>
+                </li>
+                <li><code><strong>to</strong></code>
+                  <ul class="values-info">
+                    <li>An ending offset of 100%</li>
+                  </ul>
+                </li>
+                <li><code><strong>&lt;percentage&gt;</strong> </code>
+                  <ul class="values-info">
+                    <li>A percentage of the time through the animation sequence at which the specified keyframe should occur.</li>
+                  </ul>
+                </li>
+              </ul>
         </section>
-        <section class="main-section" id="skills">
-            <header><code>Skills</code></header>
-            <article>
-                <p>Frontend Developer</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <p>Backend Developer</p>
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </article>
+        <section class="main-section" id="description">
+            <header><h2>Description</h2></header>
+              <p>Javascript can access the <code>@keyframes</code> at-rule with the CSS object model interface <code>CSSKEYframesRule</code>.</p>
+              <p>To use keyframes, create a <code>@keyframes</code> rule with a name that is then used by the <code>animation-name</code> property to match an animation to its keyframe declaration. Each <code>@keyframes</code> rule contains a style list of keyframe selectors, which specify percentages along the animation when the keyframe occurs, and a block containing the styles for that keyframe. </p>
+              <p>You can list the keyframe percentages in any order; they will be handled in the order they should occur.</p>
         </section>
-        <section class="main-section" id="portfolio">
-            <header><code>Portfolio</code></header>
-                <p>What to include in your portfolio</p>
-                <p>Ideas for projects</p>
+        <section class="main-section" id="valid_keyframes_lists">
+            <header><h2>Valid keyframes lists</h2></header>
+                <p>If a keyframe rule doesn't specify the start or end states of the animation (this is, <code>0%/from</code> and <code>100%/to</code>, browsers will use the element's existing styles for the start/end states. This can be used to animate an element from its initial state and back.</p>
+                <p>Properties that can't be animated in keyframe rules are ignored, but supported properties will still be animated.</p>
         </section>
         <section class="main-section" id="grow">
             <header><code>Grow</code></header>
