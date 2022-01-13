@@ -12,8 +12,12 @@
         <a class="nav-link" href="#introduction">Introduction</a>
         <a class="nav-link" href="#syntax">Syntax</a>
         <a class="nav-link" href="#description">Description</a>
-        <a class="nav-link" href="#valid_keyframes_lists">Valid keyframes lists</a>
-        <a class="nav-link" href="#grow">Grow</a>
+        <a class="nav-link" href="#valid_keyframes_lists">Valid Keyframes Lists</a>
+        <a class="nav-link" href="#resolving_duplicates">Resolving Duplicates</a>
+        <a class="nav-link" href="#when_properties_are_left_out_of_some_keyframes">When Properties Are Left Out of Some Keyframes</a>
+        <a class="nav-link" href="#when_a_keyframe_is_defined_multiple_times">When a keyframe is Defined Multiple Times</a>
+        <a class="nav-link" href="#important_in_a_keyframe"><code>important in a keyframe</code></a>
+        <a class="nav-link" href="#formal_syntax">Formal Syntax</a>
     </nav>
     <main id="main-doc">
         <section class="main-section" id="introduction">
@@ -22,14 +26,14 @@
         </section>
         <section class="main-section" id="syntax">
             <header><h2>Syntax</h2></header>
-            <p><code>@keyframes slidein {
-                from {
-                  transform: translateX(0%);
-                }
-              
-                to {
-                  transform: translateX(100%);
-                }
+            <p><code>@keyframes slidein {<br>
+                from {<br>
+                  transform: translateX(0%);<br>
+                }<br>
+                <br>
+                to {<br>
+                  transform: translateX(100%);<br>
+                }<br>
               }
               </code></p>
               <h4>Values</h4>
@@ -64,14 +68,76 @@
         </section>
         <section class="main-section" id="valid_keyframes_lists">
             <header><h2>Valid keyframes lists</h2></header>
-                <p>If a keyframe rule doesn't specify the start or end states of the animation (this is, <code>0%/from</code> and <code>100%/to</code>, browsers will use the element's existing styles for the start/end states. This can be used to animate an element from its initial state and back.</p>
+                <p>If a keyframe rule doesn't specify the start or end states of the animation (this is, <code>0%/from</code> and <code>100%/to</code>), browsers will use the element's existing styles for the start/end states. This can be used to animate an element from its initial state and back.</p>
                 <p>Properties that can't be animated in keyframe rules are ignored, but supported properties will still be animated.</p>
         </section>
-        <section class="main-section" id="grow">
-            <header><code>Grow</code></header>
-                <p>Top companies looking to hire</p>
-                <p>Ways to stand out when applying</p>
+        <section class="main-section" id="resolving_duplicates">
+            <header><h2>Resolving Duplicates</h2></header>
+                <p>If multiple keyframe sets exist for a given name, the last one encountered by the parser is used. <code>@keyframes</code> rules don't cascade, so animations never derive keyframes from more than one rule set.</p>
+                <p>If a given animation time offset is duplicated, all keyframes in the <code>@keyframes</code> rule for that percentage are used for that frame. There is cascading within a <code>@keyframes</code> rule if multiple keyframes specify the same percentage values.</p>
         </section>
+        <section class="main-section" id="when_properties_are_left_out_of_some_keyframes">
+          <header>
+            <h2>When Properties are left out of some keyframes</h2>
+          </header>
+          <p>Properties that aren't specified in every keyframe are interpolated if possible - properties that can't be interpolated are dropped from the animation. For example:</p>
+          <code>@keyframes identifier {<br>
+              0% { top: 0; left: 0; }<br>
+              30% { top: 50px; }<br>
+              68%, 72% { left: 50px; }<br>
+              100% { top: 100px; left: 100%; }<br>
+            }
+          </code>
+          <p>Here, the top property animates using the <code>0%</code>, <code>30%</code>, and <code>100%</code> keyframes, and left animates using the <code>0%</code>, <code>68%</code>, <code>72%</code>, and <code>100%</code> keyframes.</p>
+        </section>
+        <section class="main-section" id="when_a_keyframe_is_defined_multiple_times">
+          <header>
+            <h2>When a keyframe is defined multiple times</h2>
+          </header>
+          <p>If a keyframe is defined multiple times but not all affected properties are in each keyframe, all values specified in these keyframes are considered. For example:</p>
+          <code>@keyframes identifier {<br>
+            0% { top: 0; }<br>
+            50% { top: 30px; left: 20px; }<br>
+            50% { top: 10px; }<br>
+            100% { top: 0; }<br>
+          }
+          </code>
+          <p>In this example, at the <code>50%</code> keyframe, the values used are <code>top: 10px</code> and <code>left: 20px</code>.</p>
+        </section>
+        <section class="main-section" id="important_in_a_keyframe">
+        <header><h2>important in a keyframe</h2></header>
+        <p>Declarations in a keyframe qualified with <code>!important</code> are ignored.</p>
+        <code>@keyframes important1 {<br>
+          from { margin-top: 50px; }<br>
+          50%  { margin-top: 150px !important; } /* ignored */<br>
+          to   { margin-top: 100px; }<br>
+        }<br>
+        <br>
+        @keyframes important2 {<br>
+          from { margin-top: 50px;<br>
+                 margin-bottom: 100px; }<br>
+          to   { margin-top: 150px !important; /* ignored */<br>
+                 margin-bottom: 50px; }<br>
+        }
+        </code>
+  </section>
+  <section class="main-section" id="formal_syntax">
+    <header><h2>Formal Syntax</h2></header>
+        <code>@keyframes &lt;keyframes-name&gt; { <br>
+          &lt;keyframe-block-list&gt;<br>
+        }<br>
+        where <br>
+        &lt;keyframes-name&gt; = &lt;custom-ident&gt; | &lt;string&gt;<br>
+        &lt;keyframe-block-list&gt; = &lt;keyframe-block&gt;+<br>
+        
+        where <br>
+        &lt;keyframe-block&gt; = &lt;keyframe-selector&gt;# {<br>
+          &lt;declaration-list&gt;<br>
+        }<br>
+        
+        where <br>
+        &lt;keyframe-selector&gt; = from | to | &lt;percentage&gt;</code>
+  </section>
     </main>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
