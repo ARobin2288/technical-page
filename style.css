@@ -17,10 +17,13 @@
     border-bottom: 2px solid black;
 }
 
+ul {
+    list-style: none;
+}
+
 #navbar ul {
     margin: 0 auto;
     margin-top: 18px;
-    list-style: none;
     margin-left: 8px;
     height: 88%;
     padding: 0;
@@ -60,7 +63,7 @@ a:hover {
 #main-doc {
     position: absolute;
     margin-left: 222px;
-    padding: 38px 22px 0 0;
+    padding: 18px 22px 0 0;
 }
 
 #main-doc section {
@@ -85,6 +88,7 @@ a:hover {
     font-weight: 800;
     text-decoration: underline;
     margin-left: 28px;
+    margin-bottom: 4px;
 }
 
 #main-doc div {
@@ -100,9 +104,25 @@ a:hover {
     background-color: rgba(163, 122, 163, 0.473);
     padding: 8px;
     font-size: 15px;
-    width: fit-content;
 }
 
+#syntax .values-title {
+    margin: 0 auto;
+    padding-top: 18px;
+}
+
+#syntax .values-title li {
+    padding-top: 0;
+    padding-bottom: 18px;
+}
+
+code {
+    font-size: 16px;
+}
+
+#reference a{
+    color: blue;
+}
 
 footer {
     padding-top: 108px;
