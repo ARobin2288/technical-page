@@ -8,38 +8,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav id="navbar">
-        <header>@keyframes</header>
-        <ul>
-          <li><a class="nav-link" href="#introduction">Introduction</a></li>
-          <li><a class="nav-link" href="#syntax">Syntax</a></li>
-          <li><a class="nav-link" href="#description">Description</a></li>
-          <li><a class="nav-link" href="#valid_keyframes_lists">Valid Keyframes Lists</a></li>
-          <li><a class="nav-link" href="#resolving_duplicates">Resolving Duplicates</a></li>
-          <li><a class="nav-link" href="#when_properties_are_left_out_of_some_keyframes">When Properties Are Left Out of Some Keyframes</a></li>
-          <li><a class="nav-link" href="#when_a_keyframe_is_defined_multiple_times">When a keyframe is Defined Multiple Times</a></li>
-          <li><a class="nav-link" href="#important_in_a_keyframe"><code>important</code> in a keyframe</a></li>
-          <li><a class="nav-link" href="#formal_syntax">Formal Syntax</a></li>
-          <li><a class="nav-link" href="#reference">Reference</a></li>
-        </ul>
-      </nav>
-      <main id="main-doc">
-        <section class="main-section" id="introduction">
-          <header><h2>Introduction</h2></header>
-          <p>The <code><strong>@keyframes</strong></code> CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions. </p>
-        </section>
-        <section class="main-section" id="syntax">
-          <header><h2>Syntax</h2></header>
-          <p><code>@keyframes slidein {<br>
-                from {<br>
-                  transform: translateX(0%);<br>
-                }<br>
-                <br>
-                to {<br>
-                  transform: translateX(100%);<br>
-                }<br>
-              }
-          </code></p>
+  <nav id="navbar">
+    <header>@keyframes</header>
+      <ul>
+        <li><a class="nav-link" href="#introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#syntax">Syntax</a></li>
+        <li><a class="nav-link" href="#description">Description</a></li>
+        <li><a class="nav-link" href="#valid_keyframes_lists">Valid Keyframes Lists</a></li>
+        <li><a class="nav-link" href="#resolving_duplicates">Resolving Duplicates</a></li>
+        <li><a class="nav-link" href="#when_properties_are_left_out_of_some_keyframes">When Properties Are Left Out of Some Keyframes</a></li>
+        <li><a class="nav-link" href="#when_a_keyframe_is_defined_multiple_times">When a keyframe is Defined Multiple Times</a></li>
+        <li><a class="nav-link" href="#important_in_a_keyframe"><code>important</code> in a keyframe</a></li>
+        <li><a class="nav-link" href="#formal_syntax">Formal Syntax</a></li>
+        <li><a class="nav-link" href="#reference">Reference</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="introduction">
+        <header><h2>Introduction</h2></header>
+        <div>
+          <p>The <code><strong>@keyframes</strong></code> CSS at-rule controls the intermediate steps in a CSS animation sequence by defining styles for keyframes (or waypoints) along the animation sequence. This gives more control over the intermediate steps of the animation sequence than transitions.</p>
+        </div>
+      </section>
+      <section class="main-section" id="syntax">
+        <header><h2>Syntax</h2></header>
+        <div>
+          <div class="codeblock">
+            <code>
+             <blockquote>@keyframes slidein {
+              <blockquote>from {
+                <blockquote>transform: translateX(0%);</blockquote> 
+                } <br> 
+                 to {
+                <blockquote>transform: translateX(100%);</blockquote>
+              }</blockquote>
+            }</blockquote></code>
+          </div>
           <h4>Values</h4>
           <ul class="values-title">
             <li><code><strong>&lt;custom-ident&gt;</strong></code> 
@@ -63,92 +67,119 @@
               </ul>
             </li>
           </ul>
-        </section>
-        <section class="main-section" id="description">
-          <header><h2>Description</h2></header>
+        </div>
+      </section>
+      <section class="main-section" id="description">
+        <header><h2>Description</h2></header>
+        <div>
           <p>Javascript can access the <code>@keyframes</code> at-rule with the CSS object model interface <code>CSSKEYframesRule</code>.</p>
           <p>To use keyframes, create a <code>@keyframes</code> rule with a name that is then used by the <code>animation-name</code> property to match an animation to its keyframe declaration. Each <code>@keyframes</code> rule contains a style list of keyframe selectors, which specify percentages along the animation when the keyframe occurs, and a block containing the styles for that keyframe. </p>
           <p>You can list the keyframe percentages in any order; they will be handled in the order they should occur.</p>
-        </section>
-        <section class="main-section" id="valid_keyframes_lists">
-          <header><h2>Valid keyframes lists</h2></header>
+        </div>
+      </section>
+      <section class="main-section" id="valid_keyframes_lists">
+        <header><h2>Valid keyframes lists</h2></header>
+        <div>
           <p>If a keyframe rule doesn't specify the start or end states of the animation (this is, <code>0%/from</code> and <code>100%/to</code>), browsers will use the element's existing styles for the start/end states. This can be used to animate an element from its initial state and back.</p>
           <p>Properties that can't be animated in keyframe rules are ignored, but supported properties will still be animated.</p>
-        </section>
-        <section class="main-section" id="resolving_duplicates">
-          <header><h2>Resolving Duplicates</h2></header>
+        </div>
+      </section>
+      <section class="main-section" id="resolving_duplicates">
+        <header><h2>Resolving Duplicates</h2></header>
+        <div>
           <p>If multiple keyframe sets exist for a given name, the last one encountered by the parser is used. <code>@keyframes</code> rules don't cascade, so animations never derive keyframes from more than one rule set.</p>
           <p>If a given animation time offset is duplicated, all keyframes in the <code>@keyframes</code> rule for that percentage are used for that frame. There is cascading within a <code>@keyframes</code> rule if multiple keyframes specify the same percentage values.</p>
-        </section>
-        <section class="main-section" id="when_properties_are_left_out_of_some_keyframes">
-          <header>
-            <h2>When Properties are left out of some keyframes</h2>
-          </header>
+        </div>
+      </section>
+      <section class="main-section" id="when_properties_are_left_out_of_some_keyframes">
+        <header>
+          <h2>When Properties are left out of some keyframes</h2>
+        </header>
+        <div>
           <p>Properties that aren't specified in every keyframe are interpolated if possible - properties that can't be interpolated are dropped from the animation. For example:</p>
-          <code>@keyframes identifier {<br>
-              0% { top: 0; left: 0; }<br>
-              30% { top: 50px; }<br>
-              68%, 72% { left: 50px; }<br>
-              100% { top: 100px; left: 100%; }<br>
-            }
-          </code>
+          <div class="codeblock">
+            <code>
+             <blockquote>@keyframes identifier {
+              <blockquote>
+                0% {top: 0; left: 0;} <br>
+                30% {top: 50px;} <br>
+                68%, 72% {left: 50px;} <br>
+                100% {top: 100px; left: 100%;} <br>
+              </blockquote>
+              }</blockquote>
+            </code>
+          </div>
           <p>Here, the top property animates using the <code>0%</code>, <code>30%</code>, and <code>100%</code> keyframes, and left animates using the <code>0%</code>, <code>68%</code>, <code>72%</code>, and <code>100%</code> keyframes.</p>
-        </section>
-        <section class="main-section" id="when_a_keyframe_is_defined_multiple_times">
-          <header>
-            <h2>When a keyframe is defined multiple times</h2>
-          </header>
-          <p>If a keyframe is defined multiple times but not all affected properties are in each keyframe, all values specified in these keyframes are considered. For example:</p>
-          <code>@keyframes identifier {<br>
-            0% { top: 0; }<br>
-            50% { top: 30px; left: 20px; }<br>
-            50% { top: 10px; }<br>
-            100% { top: 0; }<br>
-          }
-          </code>
+        </div>
+      </section>
+      <section class="main-section" id="when_a_keyframe_is_defined_multiple_times">
+        <header>
+          <h2>When a keyframe is defined multiple times</h2>
+        </header>
+        <div><p>If a keyframe is defined multiple times but not all affected properties are in each keyframe, all values specified in these keyframes are considered. For example:</p>
+          <div class="codeblock">
+            <code>
+              <blockquote>@keyframes identifier {
+              <blockquote>0% {top: 0;} <br>
+                50% {top: 30px; left: 20px;} <br>
+                50% {top: 10px;} <br>
+                100% {top: 0;}</blockquote>
+              }</blockquote>
+            </code>
+          </div>
           <p>In this example, at the <code>50%</code> keyframe, the values used are <code>top: 10px</code> and <code>left: 20px</code>.</p>
-        </section>
-        <section class="main-section" id="important_in_a_keyframe">
-          <header><h2>important in a keyframe</h2></header>
+        </div>
+      </section>
+      <section class="main-section" id="important_in_a_keyframe">
+        <header><h2>important in a keyframe</h2></header>
+        <div>
           <p>Declarations in a keyframe qualified with <code>!important</code> are ignored.</p>
-          <code>@keyframes important1 {<br>
-          from { margin-top: 50px; }<br>
-          50%  { margin-top: 150px !important; } /* ignored */<br>
-          to   { margin-top: 100px; }<br>
-          }<br>
-          <br>
-          @keyframes important2 {<br>
-          from { margin-top: 50px;<br>
-                 margin-bottom: 100px; }<br>
-          to   { margin-top: 150px !important; /* ignored */<br>
-                 margin-bottom: 50px; }<br>
-          }
-          </code>
-        </section>
-        <section class="main-section" id="formal_syntax">
-          <header><h2>Formal Syntax</h2></header>
-          <code>@keyframes &lt;keyframes-name&gt; { <br>
-          &lt;keyframe-block-list&gt;<br>
-          }<br>
-          where <br>
-          &lt;keyframes-name&gt; = &lt;custom-ident&gt; | &lt;string&gt;<br>
-          &lt;keyframe-block-list&gt; = &lt;keyframe-block&gt;+<br>
-        
-          where <br>
-          &lt;keyframe-block&gt; = &lt;keyframe-selector&gt;# {<br>
-          &lt;declaration-list&gt;<br>
-          }<br>
-        
-          where <br>
-          &lt;keyframe-selector&gt; = from | to | &lt;percentage&gt;</code>
-        </section>
-        <section class="main-section" id="reference">
-          <header><h2>Reference</h2></header>
+          <div class="codeblock">
+            <code>
+              <blockquote>@keyframes important1 {
+              <blockquote>from {margin-top: 50px;}<br>
+                50%  {margin-top: 150px !important;} /* ignored */<br>
+              to   {margin-top: 100px;}<br></blockquote>
+            }<br>
+            <br>
+            @keyframes important2 {<br>
+              <blockquote>from {margin-top: 50px;<br>
+                <blockquote>margin-bottom: 100px;}</blockquote> 
+                to   {margin-top: 150px !important; /* ignored */<br>
+                <blockquote>margin-bottom: 50px;}</blockquote></blockquote>
+            }</blockquote>
+            </code>
+          </div>
+        </div>
+      </section>
+      <section class="main-section" id="formal_syntax">
+        <header><h2>Formal Syntax</h2></header>
+        <div>
+          <div class="codeblock">
+            <code>
+              <blockquote>@keyframes &lt;keyframes-name&gt; { <br>
+            <blockquote>&lt;keyframe-block-list&gt;</blockquote>
+            }<br>
+            where <br>
+            &lt;keyframes-name&gt; = &lt;custom-ident&gt; | &lt;string&gt;<br>
+            &lt;keyframe-block-list&gt; = &lt;keyframe-block&gt;+<br>
+            where <br>
+            &lt;keyframe-block&gt; = &lt;keyframe-selector&gt;# {<br>
+            <blockquote>&lt;declaration-list&gt;</blockquote>
+            }<br>
+            where <br>
+            &lt;keyframe-selector&gt; = from | to | &lt;percentage&gt;</blockquote></code>
+          </div>
+        </div>
+      </section>
+      <section class="main-section" id="reference">
+        <header><h2>Reference</h2></header>
+        <div>
           <p>All the documentation on this page is taken from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">Mozilla Developer Network</a></p>
-        </section>
-        <footer>Coded by Robin A.</footer>
-      </main>
-      
-      <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+        </div>
+      </section>
+      <footer>Coded by Robin A.</footer>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
